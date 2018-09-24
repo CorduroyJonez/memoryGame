@@ -32,8 +32,12 @@ export const chartScores = (scores) => {
 
     //take last 5 elements of the scores array passed in
     const mostRecentFive = scores.slice(-5);
+
+    //make copy of and sort scores array to not mutate
+    const sorted = [...scores].sort( (a,b) => b-a);
+
     //sort the entire scores array from largest to smallest, copy over last 5 elements
-    const topFive = scores.sort( (a,b) => b-a).slice(-5);
+    const topFive = sorted.slice(-5);
 
     //grab the chart canvas
     chartCanvas = document.getElementById('myChart');

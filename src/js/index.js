@@ -44,16 +44,17 @@ const initializeGame = (numOfMatches=6) => {
 let cardsContainer = document.querySelector('.container');
 cardsContainer.addEventListener('click', (event) => {
 
-    //increase moves on game model
-    state.game.increaseMoves();
-
-    //increase moves in statsView
-    statsView.updateStats(state.game.moves, state.game.pairsRemain);
-
     //get closest card
     let selectedCard = event.target.closest('.card');
 
     if(selectedCard) {
+
+        //increase moves on game model
+        state.game.increaseMoves();
+
+        //increase moves in statsView
+        statsView.updateStats(state.game.moves, state.game.pairsRemain);
+
         //pass card to view for comparison logic
         const didScore = cardsView.doCardsMatch(selectedCard);
         
