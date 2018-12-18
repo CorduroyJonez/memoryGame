@@ -109,6 +109,7 @@ export const doCardsMatch = (selectedCard) => {
 }
 
 //private function creating an array of duplicate values
+console.time()
 const arrayDupes = (total) => {
 
     //initialize empty array
@@ -123,14 +124,12 @@ const arrayDupes = (total) => {
        let counter = 0;
       
         //loop through numArrays to detect duplicate values
-      numArrays.forEach(current => {
-        if(current === num) {
-          counter++;
-        }
+      let check = numArrays.filter(current => {
+        return current === num;
       });
         
       //if less than 2 occurrences, push
-      if(counter < 2) {
+      if(check.length < 2) {
         numArrays.push(num);
       } //if not - recursion and try again
       else {
@@ -146,6 +145,7 @@ const arrayDupes = (total) => {
     
     return numArrays;
 }
+console.timeEnd();
 
 //private function determining if backs of cards match
 const isMatch = notScored => {
